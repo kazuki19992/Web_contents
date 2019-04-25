@@ -3,30 +3,26 @@
 
 if (isset($_GET["dbname"]) && isset($_GET["dbname_kana"])) {
     $dbname = htmlspecialchars($_GET["dbname"], ENT_QUOTES);
-    $dbname_kana = htmlspecialchars($_GET["dbname_kana"], ENT_QUOTES);
-    
+    $dbnamekana = htmlspecialchars($_GET["dbname_kana"], ENT_QUOTES);
     if (isset($_GET["page"])) {
-        $page = htmlspecialchars($_GET["page"], ENT_QUOTES);
+      $page = htmlspecialchars($_GET["page"], ENT_QUOTES);
     } else {
-        $page = "";
+      $page = "";
     }
-
-} else {
-
+  } else {
     header("Location: index.php");
-}
+  }
 
-//ページングのための情報を取得
+// ページングするための情報取得、設定
 $name = "sqlite:".$dbname.".db";
 $db = new PDO($name);
-$thread = $db->query("SELECT COUNT(*) FROM bbs");
-$posts = $thread -> fetchColumn(); //総件数取得
-$view = 3; //1ページあたりの表示件数
-$pcount = ceil($posts/$view); //ページ数
-$plast = $posts % $view; //最終ページ件数
-
+$stmt = $db->query("SELECT COUNT(*) FROM bbs");
+$kensu = $stmt->fetchColumn(); // 総件数
+$hyouji = 3; // 1ページあたり表示件数
+$pcount = ceil($kensu/$hyouji); // 総ページ数
+$plast = $kensu % $hyouji; // 最終ページの件数
 if ($page == "") {
-    $page = $pcount;
+  $page = $pcount;
 }
 
 //ページ移動のためのリンクを表示
