@@ -9,7 +9,7 @@
     //掲示板リスト用PHP
 
     //データベースとの接続
-    $db = new PDO("sqlite:db/list.db");
+    $db = new PDO("sqlite:db/sqlite3/list.db");
 
     //スレッド件数の取得
     $thread = $db -> query("SELECT COUNT(*) FROM list");
@@ -82,7 +82,7 @@ EOF;
         <script>
             document.write("作成日：" + document.lastModified);
         </script>
-        
+
         <?php echo $html; ?>
         <?php echo $build; ?>
     </body>
