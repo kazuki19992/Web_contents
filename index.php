@@ -1,15 +1,10 @@
-<!-- HTMLをPHPとして認識させる -->
-<FilesMatch "\.html$">
-    AddType application/x-httpd-php.html
-</FilesMatch>
-
 <!-- PHPの記述を行う -->
 
 <?php
     //掲示板リスト用PHP
 
     //データベースとの接続
-    $db = new PDO("sqlite:db/sqlite3/list.db");
+    $db = new PDO("sqlite:list.db");
 
     //スレッド件数の取得
     $thread = $db -> query("SELECT COUNT(*) FROM list");
@@ -28,10 +23,10 @@
 
         foreach ($list as $row) {
             //リストの生成
-            $html .= "<a href='bbs.php?dbname={$row["dbname"]}
+            $html = "<a href='bbs.php?dbname={$row["dbname"]}
             $dbname_kana={$row["dbname_kana"]}'>".$i." : ".$row["dbname_kana"].
             "(".$row['posts'].") ".$row['updtime']."</a>".
-            "<a href='del.php?dbname{$row["dbname"]}'>削除する</a><br><br>";
+            "  <a href='del.php?dbname{$row["dbname"]}'>削除する</a><br><br>";
             
             $i++;
         }
@@ -77,12 +72,13 @@ EOF;
     </head>
     <body>
         <h2 style="color:#ff0000;">【学内専用】BBS</h1>
-        
+        <p>この掲示板の基幹部分は<a  href="https://qiita.com/torokko/items/8a07519782f01a68c627">このページ</a>を参考にしました。</p>
         <!-- 作成日の記述 -->
         <script>
             document.write("作成日：" + document.lastModified);
         </script>
-
+        <BR>
+        <BR>
         <?php echo $html; ?>
         <?php echo $build; ?>
     </body>
