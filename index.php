@@ -11,22 +11,24 @@
     $listcount = $thread -> fetchColumn();
     $thread -> closeCursor();
 
+    //変数宣言
+    $i = 1;
+    $html = "";
+    
+
     //掲示板が存在した場合リンクを表示
     if ($listcount > 0){
+       
         //SQLを使用し、投稿順に並べる
         $thread = $db -> query("SELECT * FROM list WHERE flg = 0 ORDER BY updtime DESC");
         $list = $thread -> fetchAll(PDO::FETCH_ASSOC);
-        
-        //変数宣言
-        $i = 1;
-        $html = "";
 
         foreach ($list as $row) {
             //リストの生成
-            $html = "<a href='bbs.php?dbname={$row["dbname"]}
-            $dbname_kana={$row["dbname_kana"]}'>".$i." : ".$row["dbname_kana"].
-            "(".$row['posts'].") ".$row['updtime']."</a>".
-            "  <a href='del.php?dbname{$row["dbname"]}'>削除する</a><br><br>";
+            $html .= "<a href='bbs.php?dbname={$row["dbname"]}
+            &dbname_kana={$row["dbname_kana"]}'>".$i.":"
+            .$row["dbname_kana"]." (".$row['kensu'].") ".$row['updtime']."</a>".
+            " <a href='del.php?dbname={$row["dbname"]}'>削除する</a><br><br>";
             
             $i++;
         }
@@ -34,7 +36,7 @@
     $db = null;
 
     //掲示板のスレッド数が10以下の場合、新規スレッド作成フォームを表示
-    if($listcount <= 100){
+    if($listcount <= 10){
         $listcount ++;
         $newdbname = "bbs".$listcount;
         
