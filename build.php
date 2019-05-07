@@ -10,7 +10,7 @@ if (isset($_POST["newbbs"])) {
   $db = new SQLite3($name);
   $db->exec("CREATE TABLE bbs (id INTEGER PRIMARY KEY, hiduke TEXT, comment TEXT)");
   $db = null;
-  echo "新しい掲示板「".$newdbnamekana."」を作りました。<br><br>";
+  echo "新しい掲示板「".$newdbname_kana."」を作りました。<br><br>";
   echo "<a href='index.php'>掲示板へ戻る</a>";
 }
 ?>
