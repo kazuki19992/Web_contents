@@ -80,8 +80,16 @@ EOF;
             document.write("作成日：" + document.lastModified);
         </script>
         <BR>
+        <h3>実装済機能</h3>
+        <p>
+            ・スレッドの新規作成<br>
+            ・スレッドの削除<br>
+            ※スレッドの中身にアクセスすることはできません
+        </p>
         <BR>
         <?php echo $html; ?>
         <?php echo $build; ?>
+        <p>作成者：u306065 櫛田一樹<br>
+        Twitter：@Tech_Kazu</p>
     </body>
 </html>

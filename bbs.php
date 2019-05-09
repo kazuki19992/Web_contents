@@ -3,7 +3,7 @@
 
 if (isset($_GET["dbname"]) && isset($_GET["dbname_kana"])) {
     $dbname = htmlspecialchars($_GET["dbname"], ENT_QUOTES);
-    $dbnamekana = htmlspecialchars($_GET["dbname_kana"], ENT_QUOTES);
+    $dbname_kana = htmlspecialchars($_GET["dbname_kana"], ENT_QUOTES);
     if (isset($_GET["page"])) {
       $page = htmlspecialchars($_GET["page"], ENT_QUOTES);
     } else {
@@ -14,9 +14,14 @@ if (isset($_GET["dbname"]) && isset($_GET["dbname_kana"])) {
   }
 
 // ページングするための情報取得、設定
-$name = "sqlite:".$dbname.".db";
+$name = "sqlite:db/".$dbname.".db";
 $db = new PDO($name);
-$stmt = $db->query("SELECT COUNT(*) FROM bbs");
+$sql="SELECT COUNT (*) FROM bbs";
+$stmt = $db->prepare($sql);
+
+if($stmt === false){
+  echo "stmtの中身はfalseです<BR>";
+}
 $kensu = $stmt->fetchColumn(); // 総件数
 $hyouji = 3; // 1ページあたり表示件数
 $pcount = ceil($kensu/$hyouji); // 総ページ数
@@ -75,7 +80,7 @@ function anchor($dbname, $comment) {
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <title><?php echo $dbnamekana; ?></title>
+        <title><?php echo $dbname_kana; ?></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="initial-scale=1.0">
        <link rel="stylesheet" href="style.css" media="all">
