@@ -16,19 +16,30 @@ if (isset($_GET["dbname"]) && isset($_GET["dbname_kana"])) {
 // ページングするための情報取得、設定
 $name = "sqlite:db/".$dbname.".db";
 $db = new PDO($name);
-$sql="SELECT COUNT (*) FROM bbs";
-$stmt = $db->prepare($sql);
+// var_dump($db);
+// echo "<BR>";
+// $sql="SELECT * FROM BBS";
+// $stmt = $db->query($sql);
+// var_dump($stmt->rowCount());
+// echo "<BR>";
+// if($stmt === false){
+//   echo "stmtの中身はfalseです。<BR>";
 
-if($stmt === false){
-  echo "stmtの中身はfalseです<BR>";
-}
-$kensu = $stmt->fetchColumn(); // 総件数
-$hyouji = 3; // 1ページあたり表示件数
-$pcount = ceil($kensu/$hyouji); // 総ページ数
-$plast = $kensu % $hyouji; // 最終ページの件数
-if ($page == "") {
-  $page = $pcount;
-}
+// }
+
+// //var_dump($stmt);
+// if($stmt->fetchColumn() === 0){
+//   $kensu = 0;
+// }else{
+//   $kensu = $stmt->fetchColumn();
+// } // 総件数
+// //var_dump($kensu);
+// $hyouji = 3; // 1ページあたり表示件数
+// $pcount = ceil($kensu/$hyouji); // 総ページ数
+// $plast = $kensu % $hyouji; // 最終ページの件数
+// if ($page == "") {
+//   $page = $pcount;
+// }
 
 //ページ移動のためのリンクを表示
 $link = "";
@@ -37,13 +48,14 @@ for ($i=1; $i<=$pcount; $i++) {
 }
 
 //ページ表示
-$stmt = $db->query("SELECT * FROM bbs LIMIT ($page-1)*$hyouji, $hyouji");
-$html = "<h2 style='color:#ff0000;'>".$dbname_kana."</h2>";
-$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-foreach ($list as $row) {
-  $html .= $row["id"]." : ".$row["hiduke"]."<br>";
-  $html .= "<div id='commnet'>".$row["comment"]."</div><br><br>";
-}
+// $stmt = $db->query("SELECT * FROM bbs LIMIT ($page-1)*$hyouji, $hyouji");
+// var_dump($stmt);
+// $html = "<h2 style='color:#ff0000;'>".$dbname_kana."</h2>";
+// $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// foreach ($list as $row) {
+//   $html .= $row["id"]." : ".$row["hiduke"]."<br>";
+//   $html .= "<div id='commnet'>".$row["comment"]."</div><br><br>";
+// }
 
 //コメントにアンカーがあればアンカーに変換する
 $html = anchor($dbname, $html);

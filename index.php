@@ -25,10 +25,10 @@
 
         foreach ($list as $row) {
             //リストの生成
-            $html .= "<a href='bbs.php?dbname={$row["dbname"]}
+            $html .= "<div class=\"bbslist\"><a href='bbs.php?dbname={$row["dbname"]}
             &dbname_kana={$row["dbname_kana"]}'>".$i.":"
             .$row["dbname_kana"]." (".$row['kensu'].") ".$row['updtime']."</a>".
-            " <a href='del.php?dbname={$row["dbname"]}'>削除する</a><br><br>";
+            " <a href='del.php?dbname={$row["dbname"]}'><span class=\"removebbs\">削除する</span></a></div><br>";
             
             $i++;
         }
@@ -69,24 +69,34 @@ EOF;
         
         <meta charset="utf-8">
         <meta name"viewport" content="initial-scale=1.0">
-        <link rel="stylesheet" href="style.css" media="all">
+        <link rel="stylesheet" href="CSS/style.css" media="all">
 
     </head>
     <body>
-        <h2 style="color:#ff0000;">【学内専用】BBS</h1>
-        <p>この掲示板の基幹部分は<a  href="https://qiita.com/torokko/items/8a07519782f01a68c627">このページ</a>を参考にしました。</p>
+        <center>
+        <h1>【学内専用】BBS</h1>
+        <div class="info">この掲示板の基幹部分は<a  href="https://qiita.com/torokko/items/8a07519782f01a68c627">このページ</a>を参考にしました。</div>
+        </center>
+
         <!-- 作成日の記述 -->
-        <script>
-            document.write("作成日：" + document.lastModified);
-        </script>
+        <div align="right" class="date">
+            <script>
+                document.write("作成日：" + document.lastModified);
+            </script>
+        </div>
         <BR>
-        <h3>実装済機能</h3>
-        <p>
-            ・スレッドの新規作成<br>
-            ・スレッドの削除<br>
+
+        <div class="func">
+            <h3>実装済機能</h3>
+            <ul type = "disc">
+                <li>スレッドの新規作成</li>
+                <li>スレッドの削除</li>
+            </ul>
             ※スレッドの中身にアクセスすることはできません
-        </p>
+        </div>
+
         <BR>
+        <h3 class="bbslisttitle">現在有効になっているスレッド</h3>
         <?php echo $html; ?>
         <?php echo $build; ?>
         <p>作成者：u306065 櫛田一樹<br>
