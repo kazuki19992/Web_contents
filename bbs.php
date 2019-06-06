@@ -48,14 +48,14 @@ for ($i=1; $i<=$pcount; $i++) {
 }
 
 //ページ表示
-// $stmt = $db->query("SELECT * FROM bbs LIMIT ($page-1)*$hyouji, $hyouji");
-// var_dump($stmt);
-// $html = "<h2 style='color:#ff0000;'>".$dbname_kana."</h2>";
-// $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// foreach ($list as $row) {
-//   $html .= $row["id"]." : ".$row["hiduke"]."<br>";
-//   $html .= "<div id='commnet'>".$row["comment"]."</div><br><br>";
-// }
+$stmt = $db->query("SELECT * FROM bbs");//LIMIT ($page-1)*$hyouji, $hyouji");
+var_dump($stmt);
+$html = "<h2 style='color:#ff0000;'>".$dbname_kana."</h2>";
+$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+foreach ($list as $row) {
+  $html .= $row["id"]." : ".$row["hiduke"]."<br>";
+  $html .= "<div id='commnet'>".$row["comment"]."</div><br><br>";
+}
 
 //コメントにアンカーがあればアンカーに変換する
 $html = anchor($dbname, $html);

@@ -39,3 +39,7 @@ h1 {
     border-left: solid 5px #00d48e;
     /*左線（実線 太さ 色）*/
 }
+
+.reprytxt {
+    color: #494949;
+}

@@ -45,11 +45,11 @@ if (isset($_POST["ins"])) {
     var_dump($db);
 
     // 件数を取得し直す
-    $stmt = $db->query("SELECT COUNT(*) FROM bbs");
-    $kensu = $stmt->fetchColumn();
+    // $stmt = $db->query("SELECT COUNT(*) FROM bbs");
+    // $kensu = $stmt->fetchColumn();
 
     // list.dbの件数、更新日時を更新しておく（これで掲示板リスト画面で一番上に表示されるようになる）
-    $db = new PDO("sqlite:db/list.db");
+    $db = new PDO("sqlite:list.db");
     $db->exec("UPDATE list SET kensu=$kensu, updtime=(SELECT datetime('now', '+09:00:00')) WHERE dbname='$dbname'");
     $db = null;
     $html .= "投稿しました。<br><br>";
