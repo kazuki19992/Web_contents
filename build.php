@@ -6,14 +6,14 @@ if (isset($_POST["newbbs"])) {
   $newdbname_kana = htmlspecialchars($_POST["newdbname_kana"], ENT_QUOTES);
   $db = new PDO("sqlite:list.db");
   $db->exec("INSERT INTO list (dbname, dbname_kana) VALUES ('$newdbname', '$newdbname_kana')");
-  $name = "db/".$newdbname.".db";
-  $db = new SQLite3($name);
-  $sql = "CREATE TABLE bbs (id INTEGER PRIMARY KEY, hiduke TEXT, comment TEXT)";
-  $res = $db -> query($sql);
-  //var_dump($res);
+  // $name = "db/".$newdbname.".db";
+  // $db = new SQLite3($name);
+  // $sql = "CREATE TABLE bbs (id INTEGER PRIMARY KEY, hiduke TEXT, comment TEXT)";
+  // $res = $db -> query($sql);
+  // var_dump($res);
 
   //ファイルのモードを変更する
-  chmod("db/".$newdbname.".db" , 0766);
+  // chmod("db/".$newdbname.".db" , 0766);
   
   //初期のデータを格納(削除可能)
   // 投稿日時等を取得する
@@ -23,7 +23,7 @@ if (isset($_POST["newbbs"])) {
   //$name = "sqlite:db/".$dbname.".db";
   //投稿処理
   //$db = new PDO($name);
-  $db->exec("INSERT INTO bbs (hiduke, comment) VALUES ('$hiduke', '掲示板が作成されました。')");
+  // $db->exec("INSERT INTO bbs (hiduke, comment) VALUES ('$hiduke', '掲示板が作成されました。')");
   //ここまで
 
 
@@ -40,11 +40,13 @@ if (isset($_POST["newbbs"])) {
     <meta charset="utf-8">
     <link rel="stylesheet" href="CSS/style.css" media="all">
     <link rel="stylesheet" href="CSS/style2.css" media="all">
+    <!--リダイレクト処理-->
+    <meta http-equiv="refresh" content="3; url=./index.php">
   </head>
   <body>
   <?php
     echo "<p class=\"msg\">投稿しました！！</p>";
-    echo "<a href='index.php' class=\"backBtn\">掲示板へ戻る</a>";
-    ?>
+    echo "自動的に掲示板に戻ります。少し待っててね！";
+  ?>
   </body>
 </head>
