@@ -147,6 +147,7 @@ END;
         
         <meta charset="utf-8">
         <meta name"viewport" content="initial-scale=1.0">
+        <meta name="theme-color" content="#40e0d0">
         <script type="text/javascript" src="./JS/func.js"></script>
         <!-- <link rel="stylesheet" href="CSS/style.css" media="all"> -->
         <link rel="stylesheet" href="CSS/style2.css" media="all">
