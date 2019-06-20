@@ -18,6 +18,8 @@
     $html = "";
     
 
+    
+
     //掲示板が存在した場合リンクを表示
     if ($listcount > 0){
        
@@ -37,6 +39,15 @@
             // <div class=\"bbslist\"> 
             // $i：$row[updtime]<br>.$row[dbname_kana]</div><br>
 // BBS;
+
+            // //正規表現を使用しURLの抽出を行う
+            // $pattern = '(https?://[-_.!~*\'()a-zA-Z0-9;/?:@&=+$,%#]+)';
+            
+            // //正規表現にマッチしたURLを取得
+            // $URL = preg_grep(string $pattern,$row["dbname_kana"]);
+
+            
+
 
             $html .= "<div class=\"card\"> <div class=\"card-content\"><h5 class=\"metadata\">".$i.":名無しの学生:".$row['updtime']."</h5><p class=\"replytxt\">"
             .$row["dbname_kana"]."</p><BR><BR> <div class=\"card-action\"><a class=\"waves-effect waves-teal btn-flat\" href='del.php?dbname={$row["dbname"]}'>DELETE</a></div></div></div><BR>";
@@ -66,7 +77,7 @@
             <input id="bbsname" type="text" class="validate" name="newdbname_kana" value="">
             <label for="bbsname">新規レス</label>
         </div>
-        <button class="btn waves-effect waves-light" type="submit" name="newbbs""><i class="material-icons right">send</i>送る</button>
+        <button class="btn waves-effect waves-light light-green darken-1" type="submit" name="newbbs""><i class="material-icons right">send</i>送る</button>
         </form>
         
 EOF;
@@ -147,7 +158,7 @@ END;
         
         <meta charset="utf-8">
         <meta name"viewport" content="initial-scale=1.0">
-        <meta name="theme-color" content="#40e0d0">
+        <meta name="theme-color" content="#ffb60f">
         <script type="text/javascript" src="./JS/func.js"></script>
         <!-- <link rel="stylesheet" href="CSS/style.css" media="all"> -->
         <link rel="stylesheet" href="CSS/style2.css" media="all">
@@ -157,6 +168,7 @@ END;
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
         <link rel="shortcut icon" href="IMG/favicon.ico" />
+        <link rel="stylesheet" href="CSS/Loading.css" media="all">
 
         <!-- Inport Google iCon Font -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -176,6 +188,29 @@ END;
         <!--JavaScript at end of body for optimized loading-->
         <script type="text/javascript" src="JS/materialize.min.js"></script>
 
+        <!-- ローディングのアニメーション -->
+        <!-- <div id="is-loading">
+            <div id="loading">
+                <img src="ローディング画像" alt="loadingなう" />
+            </div>
+        </div> -->
+
+        <!-- 背景 -->
+        <div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+        </div >
+
         <header>
             <div id="nav-drawer">
                 <input id="nav-input" type="checkbox" class="nav-unshown">
@@ -192,15 +227,28 @@ END;
                             </center>
                         </div>
                     </div>
-                    <hr>
-                    <a class="waves-effect waves-teal btn-flat" href="https://twitter.com/Tech_Kazu"> <i class="fab fa-twitter"></i> フォローする    </a>
+
+                    <p class="nv_cts0"><i class="fas fa-folder"></i> Contents</p>
+                    <a class="nv_Link" href="./WordPress/"> <i class="fab fa-wordpress"></i></i> WordPressへ </a>
+                    <a class="nv_Link" href="https://github.com/kazuki19992/Web_contents"><i class="fab fa-github"></i> 開発用GitHubリポジトリ </a>
                     <BR>
-                    <a class="waves-effect waves-teal btn-flat" href="./WordPress/"> <i class="fab fa-wordpress"></i></i> WordPressへ     </a>
+                    <p class="nv_cts1"><i class="far fa-user"></i> 友人のページ</p>
+                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u286120/"> <i class="fas fa-user-circle"></i></i></i> To 武田 佑樹</a>
+                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u306024/"> <i class="fas fa-user-circle"></i></i></i> To 海老原 毅史</a>
+                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u306062/"> <i class="fas fa-user-circle"></i></i></i> To 川村 怜央</a>
+                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u306066/"> <i class="fas fa-user-circle"></i></i></i> To 久保木 駿</a>
+                    <BR>
+                    <p class="nv_cts2"><i class="fas fa-id-card"></i> コンタクト</p>
+                    <a class="nv_Link2" href="https://twitter.com/Tech_Kazu"> <i class="fab fa-twitter"></i> フォローする</a>
+                    <a class="nv_Link2" href="https://github.com/kazuki19992"> <i class="fab fa-github"></i> GitHubを見てみる</a>
+                    <a class="nv_Link2" href="https://github.com/kazuki19992/Web_contents/issues"> <i class="fab fa-github"></i> GiuHubで不具合を報告する</a>
+                    <a class="nv_Link2" href="mailto:kushida98@gmail.com"> <i class="fas fa-envelope"></i> メールで不具合を報告する</a>
                     <!-- <a class="nav_btn" href="https://twitter.com/Tech_Kazu">Follow</a> -->
 
                 </div>
             <center>
-            <h1 class="title">【学内専用】BBS</h1>
+
+            <h1 class="title">NU-BBS</h1>
             <div class="info">この掲示板の基幹部分は<a  href="https://qiita.com/torokko/items/8a07519782f01a68c627">このページ</a>を参考にしました。</div>
             <BR>
             <?php
@@ -213,39 +261,43 @@ END;
 
             </center>
         </header>
-        <hr>
-        <!-- 作成日の記述 -->
-        <div align="right" class="date">
-            <script>
-                document.write("作成日：" + document.lastModified);
-            </script>
-        </div>
-        <BR>
-
-        <div class="func">
-            <h3>更新情報</h3>
-            <ul type = "disc">
-                <li>ブラウザ警告の実装</li>
-                <li>ハンバーガーメニューの実装</li>
-                <li>マテリアルデザインの採用</li>
-            </ul>
             
+        <div class="contents">
+            <!-- <hr style="margin-top:15em;"> -->
+            <!-- 作成日の記述 -->
+            <div align="right" class="date">
+                <script>
+                    document.write("作成日：" + document.lastModified);
+                </script>
+            </div>
+            <BR>
+
+            <div class="func">
+                <h3>更新情報</h3>
+                <ul type = "disc">
+                    <li>ブラウザ警告の実装</li>
+                    <li>ハンバーガーメニューの実装</li>
+                    <li>マテリアルデザインの採用</li>
+                </ul>
+                
+            </div>
+
+            <BR>
+            <h4 class="bbslisttitle">投稿する！</h4>
+            <?php echo $build; ?>
+            <h4 class="bbslisttitle">掲示板</h4>
+            <?php echo $html; ?>
+            <!-- <?php echo $build; ?> -->
+            <h4 class="bbslisttitle">作成者・管理人情報</h4>
+            u306065 櫛田一樹<br>
+            <!-- Twitter：@Tech_Kazu</p> -->
+
+            <a href="https://twitter.com/Tech_Kazu" class="btn-social-flat">
+                <span class="btn-social-flat-icon btn-social-flat-icon--twitter"><i class="fab fa-twitter"></i></span>
+                <span class="btn-social-flat-text">@Tech_Kazu</span>
+            </a>
+            </div>
         </div>
 
-        <BR>
-        <h4 class="bbslisttitle">投稿する！</h4>
-        <?php echo $build; ?>
-        <h4 class="bbslisttitle">掲示板</h4>
-        <?php echo $html; ?>
-        <!-- <?php echo $build; ?> -->
-        <h4 class="bbslisttitle">作成者・管理人情報</h4>
-        u306065 櫛田一樹<br>
-        <!-- Twitter：@Tech_Kazu</p> -->
-
-        <a href="https://twitter.com/Tech_Kazu" class="btn-social-flat">
-            <span class="btn-social-flat-icon btn-social-flat-icon--twitter"><i class="fab fa-twitter"></i></span>
-            <span class="btn-social-flat-text">@Tech_Kazu</span>
-        </a>
-        </div>
     </body>
 </html>

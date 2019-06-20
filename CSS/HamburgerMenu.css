@@ -1,6 +1,10 @@
 header {
     padding: 10px;
-    background-image: linear-gradient(to top, skyblue 0%, rgb(236, 239, 244) 100%);
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-image: linear-gradient(to bottom, rgba(255, 182, 15, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 #nav-drawer {
@@ -135,4 +139,70 @@ header {
         background-image: linear-gradient(to top, rgba(255, 166, 248, 0.8) 0%, rgba(86, 0, 185, 0.8) 100%), url(../IMG/safari.png);
         background-size: cover;
     }
+}
+
+.nv_Link {
+    padding: 0.5em 1em;
+    display: block;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgba(255, 152, 0, 1) 50%);
+    background-position: 0 0;
+    background-size: 200% auto;
+    transition: .3s;
+    font-size: 125%;
+    color: #ff9800;
+}
+
+.nv_Link:hover {
+    background-position: -100% 0;
+    color: #fff;
+}
+
+.nv_Link1 {
+    padding: 0.5em 1em;
+    display: block;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgba(71, 168, 15, 1) 50%);
+    background-position: 0 0;
+    background-size: 200% auto;
+    transition: .3s;
+    font-size: 125%;
+    color: #47a80f;
+}
+
+.nv_Link1:hover {
+    background-position: -100% 0;
+    color: #fff;
+}
+
+.nv_Link2 {
+    padding: 0.5em 1em;
+    display: block;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgba(6, 172, 194, 1) 50%);
+    background-position: 0 0;
+    background-size: 200% auto;
+    transition: .3s;
+    font-size: 125%;
+    color: #06acc2;
+}
+
+.nv_Link2:hover {
+    background-position: -100% 0;
+    color: #fff;
+}
+
+.nv_cts0 {
+    padding: 0.2em 1em;
+    color: #ff9800;
+    size: 50%;
+}
+
+.nv_cts1 {
+    padding: 0.2em 1em;
+    color: #47a80f;
+    size: 50%;
+}
+
+.nv_cts2 {
+    padding: 0.2em 1em;
+    color: #06acc2;
+    size: 50%;
 }
