@@ -120,9 +120,7 @@ EOF;
                         <h4>推奨ブラウザ</h4>
                         <ul type = "disc">
                             <li> Google Chrome</li>
-                            <li> Mozilla Firefox</li>
-                            <li> Apple Safari<li>
-                            <li> Opera</li>
+                            <li> その他Chromiumブラウザ</li>
                         </ul>
                     </div>
                 <div class="black-background" id="js-black-bg"></div>
@@ -154,7 +152,7 @@ END;
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <title>【学内専用】BBS</title>
+        <title>NU-BBS</title>
         
         <meta charset="utf-8">
         <meta name"viewport" content="initial-scale=1.0">
@@ -179,6 +177,10 @@ END;
         <meta name="viewport" content="width=device-width * 0.9, initial-scale=1.0"/>
 
         <link rel="stylesheet" href="CSS/style.css" media="all">
+
+        <!-- オートスクロール -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script type="text/javascript" src="./JS/autoscrool_newbbs.js"></script>
 
 
     </head>
@@ -230,6 +232,7 @@ END;
 
                     <p class="nv_cts0"><i class="fas fa-folder"></i> Contents</p>
                     <a class="nv_Link" href="./WordPress/"> <i class="fab fa-wordpress"></i></i> WordPressへ </a>
+                    <a class="nv_Link" href="./PHP/Developer.php"> <i class="fas fa-code"></i> 開発者ページへ </a>
                     <a class="nv_Link" href="https://github.com/kazuki19992/Web_contents"><i class="fab fa-github"></i> 開発用GitHubリポジトリ </a>
                     <BR>
                     <p class="nv_cts1"><i class="far fa-user"></i> 友人のページ</p>
@@ -252,7 +255,7 @@ END;
             <div class="info">この掲示板の基幹部分は<a  href="https://qiita.com/torokko/items/8a07519782f01a68c627">このページ</a>を参考にしました。</div>
             <BR>
             <?php
-            if($browser == 'Edge' || $browser == '不明なブラウザ'){
+            if($browser != 'Chrome' && $browser != 'Internet Explorer'){
                 echo $MSG;
             }else if($browser == 'Internet Explorer'){
                 echo $MSIE;
@@ -262,7 +265,17 @@ END;
             </center>
         </header>
             
+
+        <!-- 投稿ボタン -->
+
+        <div class="addbbs">
+            <!-- 投稿ボタン -->
+            <a class="btn-floating btn-large waves-effect waves-light red" href="#bbsname"><i class="material-icons">edit</i></a>
+        </div>
+
+
         <div class="contents">
+
             <!-- <hr style="margin-top:15em;"> -->
             <!-- 作成日の記述 -->
             <div align="right" class="date">
@@ -275,9 +288,10 @@ END;
             <div class="func">
                 <h3>更新情報</h3>
                 <ul type = "disc">
-                    <li>ブラウザ警告の実装</li>
-                    <li>ハンバーガーメニューの実装</li>
-                    <li>マテリアルデザインの採用</li>
+                    <li>ハンバーガーメニューの調整</li>
+                    <li>投稿ボタンの実装</li>
+                    <li>デザインの大幅変更</li>
+                    <li>このページではアクセスログを収集しております</li>
                 </ul>
                 
             </div>
