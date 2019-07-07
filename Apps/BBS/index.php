@@ -242,7 +242,7 @@ END;
                     <p class="nv_cts0"><i class="fas fa-folder"></i> Contents</p>
                     <a class="nv_Link" href="../../"> <i class="fas fa-home"></i> HOMEへ </a>
                     <a class="nv_Link" href="./PHP/Developer.php"> <i class="fas fa-code"></i> 開発者ページへ </a>
-                    <a class="nv_Link" href="https://github.com/kazuki19992/Web_contents"><i class="fab fa-github"></i> 開発用GitHubリポジトリ </a>
+                    <a class="nv_Link" href="../Weather/"> <i class="fas fa-cloud-sun-rain"></i> 天気へ </a>
                     <BR>
                     <p class="nv_cts1"><i class="far fa-user"></i> 友人のページ</p>
                     <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u286120/"> <i class="fas fa-user-circle"></i></i></i> To 武田 佑樹</a>
@@ -287,7 +287,7 @@ END;
             <!-- <hr style="margin-top:15em;"> -->
             <!-- 作成日の記述 -->
             <div align="right" class="date">
-                <i>Ver.2.0.0</i><BR>
+                <i>Ver.3.0.0</i><BR>
                 <script>
                     document.write("作成日：" + document.lastModified);
                 </script>
@@ -297,10 +297,7 @@ END;
             <div class="func">
                 <h3>更新情報</h3>
                 <ul type = "disc">
-                    <li>ハンバーガーメニューの調整</li>
-                    <li>投稿ボタンの実装</li>
-                    <li>デザインの大幅変更</li>
-                    <li>このページではアクセスログを収集しております</li>
+                    <li>NU-Apps内のアプリケーションとして提供</li>
                 </ul>
                 
             </div>

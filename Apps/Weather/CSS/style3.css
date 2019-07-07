@@ -65,26 +65,3 @@ h2 {
 #indexphp {
     margin: 5px, 5px;
 }
-
-
-/* アプリドロワー */
-
-.appTitle {
-    font-weight: bold;
-    color: rgb(53, 53, 53);
-    font-size: 15pt;
-}
-
-.appinfo {
-    font-weight: thin;
-    font-size: 8pt;
-    color: rgb(53, 53, 53);
-}
-
-#appDrawer {
-    z-index: 10;
-}
-
-#appGrid {
-    table-layout: fixed;
-}

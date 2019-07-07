@@ -111,22 +111,6 @@ $loginflg = FALSE;
             </div>
         </div> -->
 
-        <!-- 背景 -->
-        <div class="area" >
-            <ul class="circles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-            </ul>
-        </div >
-
         <header>
             <div id="nav-drawer">
                 <input id="nav-input" type="checkbox" class="nav-unshown">
@@ -145,9 +129,9 @@ $loginflg = FALSE;
                     </div>
 
                     <p class="nv_cts0"><i class="fas fa-folder"></i> Contents</p>
-                    <a class="nv_Link" href="./BBS/"> <i class="fas fa-list-ol"></i> 掲示板へ </a>
-                    <a class="nv_Link" href="./BBS/PHP/Developer.php"> <i class="fas fa-code"></i> 開発者ページへ </a>
-                    <a class="nv_Link" href="https://github.com/kazuki19992/Web_contents"><i class="fab fa-github"></i> 開発用GitHubリポジトリ </a>
+                    <a class="nv_Link" href="./Apps/BBS/"> <i class="fas fa-list-ol"></i> 掲示板へ </a>
+                    <a class="nv_Link" href="./Apps/BBS/PHP/Developer.php"> <i class="fas fa-code"></i> 開発者ページへ </a>
+                    <a class="nv_Link" href="./Apps/Weather/"> <i class="fas fa-cloud-sun-rain"></i> 天気へ </a>
                     <BR>
                     <p class="nv_cts1"><i class="far fa-user"></i> 友人のページ</p>
                     <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u286120/"> <i class="fas fa-user-circle"></i></i></i> To 武田 佑樹</a>
@@ -166,7 +150,7 @@ $loginflg = FALSE;
             <center>
 
             <h1 class="title">NU-Apps</h1>
-            <div class="info">おかえりなさい。<?php if($loginflg == FALSE){ echo("<u>ログインする</u>");} ?></div>
+            <div class="info">おかえりなさい。<?php echo $browser; ?>さん。</div>
             <BR>
             <?php
             if($browser != 'Chrome' && $browser != 'Internet Explorer'){
@@ -178,3 +162,79 @@ $loginflg = FALSE;
 
             </center>
         </header>
+
+        <div class="contents">
+            <h4 class="bbslisttitle">Apprication</h4>
+            <div id="appDrawer">
+                <table id="appGrid" border="1" width = "100%">
+                    <tr>
+                        <td>
+                            <center>
+                                <a href="./Apps/BBS/">
+                                    <i class="fas fa-list-ol fa-6x"></i><BR>
+                                    <p class="appTitle">NU_BBS</p>
+                                    <p class="appinfo">
+                                        作成:櫛田一樹<BR>
+                                        Ver.3.0.0<BR>
+                                        <BR>
+                                        匿名掲示板です。
+                                    </p>
+                                </a>
+                            </center>
+                        </td>
+
+                        <td>
+                            <center>
+                                <a href="./Apps/Weather/">
+                                    <i class="fas fa-cloud-sun-rain fa-6x"></i><BR>
+                                    <p class="appTitle">NU_Weather</p>
+                                    <p class="appinfo">
+                                        作成:櫛田一樹<BR>
+                                        Ver.0.2.0<BR>
+                                        <BR>
+                                        WebAPIを利用した天気アプリです。<BR>
+                                        Powered by Livedoor
+                                    </p>
+                                </a>
+                            </center>
+                        </td>
+
+                        <td>
+                            <center>
+                                <a href="./Apps/Desktop/">
+                                    <i class="fas fas fa-desktop fa-6x"></i><BR>
+                                    <p class="appTitle">Desktop-mode</p>
+                                    <p class="appinfo">
+                                        作成:櫛田一樹<BR>
+                                        Ver.0.1.0<BR>
+                                        <BR>
+                                        Windowsライクなデスクトップで操作ができます。<BR>
+                                        実行にはスーパーバイザー権限が必要です。
+                                    </p>
+                                </a>
+                            </center>
+                        </td>
+                    
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+
+        <!-- 背景 -->
+        <div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+        </div >
+            

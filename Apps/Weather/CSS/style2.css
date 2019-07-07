@@ -1,0 +1,84 @@
+html {
+    /* font-family: "A-OTF 新ゴ Pro", "A-OTF リュウミン Pro", "ヒラギノ角ゴ ProN", "Meiryo UI", sans-serif; */
+    font-family: "M PLUS 1p";
+}
+
+.msg {
+    text-align: center;
+    color: red;
+}
+
+.btn-social-flat {
+    color: #484848;
+    display: inline-block;
+    height: 50px;
+    font-size: 25px;
+    line-height: 50px;
+    background: #eaeef1;
+    text-decoration: none;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.btn-social-flat-icon {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+
+.btn-social-flat-icon i {
+    font-size: 25px;
+    line-height: 50px;
+    transition: .3s;
+}
+
+.btn-social-flat-text {
+    display: inline-block;
+    width: 170px;
+    text-align: center;
+}
+
+.btn-social-flat-icon--twitter {
+    background: #1da1f3;
+}
+
+.btn-social-flat:hover .btn-social-flat-icon i {
+    -webkit-transform: rotateX(360deg);
+    transform: rotateX(360deg);
+}
+
+.backBtn {}
+
+h4 {
+    padding: 0.2em;
+    /*文字周りの余白*/
+    color: #494949;
+    /*文字色*/
+    border-left: solid 5px #ffae00;
+    /*左線（実線 太さ 色）*/
+}
+
+.back_to_cse {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: rgb(0, 187, 212);
+    background: #ECECEC;
+    transition: .4s;
+}
+
+.back_to_cse:hover {
+    background: rgb(0, 187, 212);
+    color: white;
+}
+
+.addbbs {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    z-index: 2;
+}

@@ -1,0 +1,20 @@
+.contents {}
+
+.me {
+    display: inline-block;
+}
+
+@media screen and (min-width:1000px) {
+    .me_pic {
+        display: none;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .me_pic {
+        width: 50%;
+        z-index: 1;
+        height: auto;
+        display: inline-block;
+    }
+}

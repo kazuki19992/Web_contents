@@ -1,56 +1,47 @@
 <?php
-    //開発者紹介ページ
+    // Web APIを用いた天気アプリ
+    
+    //天気取得先のURL(ベース)
+    $url = "http://weather.livedoor.com/forecast/webservice/json/v1";
 
-    //ブラウザの判定
-    $Agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+    //XMLでの地点データ読み込み
+    $xml = "./DB/primary_area.xml";
+    $xmlData = simplexml_load_file($xml);
 
-    //ユーザーエージェント情報を元に判定
-    if (strstr($Agent , 'edge')) {
-        $browser='Edge';
-    } elseif (strstr($Agent , 'trident') || strstr($Agent , 'msie')) {
-        $browser='Internet Explorer';
-    } elseif (strstr($Agent , 'chrome')) {
-        $browser='Chrome';
-    } elseif (strstr($Agent , 'firefox')) {
-        $browser='Firefox';
-    } elseif (strstr($Agent , 'safari')) {
-        $browser='Safari';
-    } elseif (strstr($Agent , 'opera')) {
-        $browser='Opera';
-    } else {
-        $browser='不明なブラウザ';
-    }
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <title>NU-BBS</title>
+        <title>NU-Weather</title>
         
         <meta charset="utf-8">
         <meta name"viewport" content="initial-scale=1.0">
         <meta name="theme-color" content="#ffb60f">
-        <script type="text/javascript" src="../JS/func.js"></script>
+        <script type="text/javascript" src="./JS/func.js"></script>
         <!-- <link rel="stylesheet" href="CSS/style.css" media="all"> -->
-        <link rel="stylesheet" href="../CSS/style2.css" media="all">
-        <link rel="stylesheet" href="../CSS/style3.css" media="all">
-        <link rel="stylesheet" href="../CSS/HamburgerMenu.css" media="all">
-        <link rel="stylesheet" href="../CSS/SNS.css" media="all">
+        <link rel="stylesheet" href="CSS/style2.css" media="all">
+        <link rel="stylesheet" href="CSS/style3.css" media="all">
+        <link rel="stylesheet" href="CSS/HamburgerMenu.css" media="all">
+        <link rel="stylesheet" href="CSS/SNS.css" media="all">
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
-        <link rel="shortcut icon" href="../IMG/favicon.ico" />
-        <link rel="stylesheet" href="../CSS/Loading.css" media="all">
+        <link rel="shortcut icon" href="IMG/favicon.ico" />
+        <link rel="stylesheet" href="CSS/Loading.css" media="all">
 
         <!-- Inport Google iCon Font -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="../CSS/materialize.min.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="CSS/materialize.min.css"  media="screen,projection"/>
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width * 0.9, initial-scale=1.0"/>
 
-        <link rel="stylesheet" href="../CSS/style.css" media="all">
-        <link rel="stylesheet" href="../CSS/dev.css" media="all">
+        <link rel="stylesheet" href="CSS/style.css" media="all">
+
+        <!-- オートスクロール -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script type="text/javascript" src="./JS/autoscrool_newbbs.js"></script>
 
 
     </head>
@@ -58,7 +49,7 @@
     <body class="indexb">
         <div id="indexphp">
         <!--JavaScript at end of body for optimized loading-->
-        <script type="text/javascript" src="../JS/materialize.min.js"></script>
+        <script type="text/javascript" src="JS/materialize.min.js"></script>
 
         <!-- ローディングのアニメーション -->
         <!-- <div id="is-loading">
@@ -92,18 +83,18 @@
                     <div id="UserInfo">
                         <div style="color:#ffffff;">
                             <center>
-                                <BR>
-                                <BR>
-                                ようこそ。<BR>
-                                <?php echo $browser; ?>さん。<BR>
+                                <div id="browser">
+                                    <br><br><br><br><br><br>
+                                    ようこそ。<?php echo $browser; ?>さん。<BR>
+                                </div>
                             </center>
                         </div>
                     </div>
 
                     <p class="nv_cts0"><i class="fas fa-folder"></i> Contents</p>
-                    <a class="nv_Link" href="../../../"> <i class="fas fa-home"></i> HOMEへ </a>
-                    <a class="nv_Link" href="../index.php"> <i class="fas fa-list-ol"></i> 掲示板へ </a>
-                    <a class="nv_Link" href="../../Weather/"> <i class="fas fa-cloud-sun-rain"></i> 天気へ </a>
+                    <a class="nv_Link" href="../../"> <i class="fas fa-home"></i> HOMEへ </a>
+                    <a class="nv_Link" href="../BBS/"> <i class="fas fa-list-ol"></i> 掲示板へ </a>
+                    <a class="nv_Link" href="../BBS/PHP/Developer.php"> <i class="fas fa-code"></i> 開発者ページへ </a>
                     <BR>
                     <p class="nv_cts1"><i class="far fa-user"></i> 友人のページ</p>
                     <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u286120/"> <i class="fas fa-user-circle"></i></i></i> To 武田 佑樹</a>
@@ -119,57 +110,13 @@
                     <!-- <a class="nav_btn" href="https://twitter.com/Tech_Kazu">Follow</a> -->
 
                 </div>
-            </div>
-            
             <center>
-                <h1 class="title">NU-BBS</h1>
-                <div class="info">
-                    この掲示板の基幹部分は<a  href="https://qiita.com/torokko/items/8a07519782f01a68c627">このページ</a>を参考にしました。
-                </div>
-                <BR>
-                <?php
-                    if($browser != 'Chrome' && $browser != 'Internet Explorer'){
-                        echo $MSG;
-                    }else if($browser == 'Internet Explorer'){
-                        echo $MSIE;
-                    }
-                ?>
+
+            <h1 class="title">NU-Weather</h1>
+            <div class="info">天気情報をLivedoor社提供のWeb APIを利用し、取得しています。</div>
+            <BR>
+
             </center>
         </header>
 
-        <div class="contents">
-            <div class="me">
-                <h4 class="bbslisttitle">
-                    開発者ページ
-                </h4>
-
-                <h5 class="me_sec">
-                    名前
-                </h5>
-
-                <p class="me_info">
-                    櫛田 一樹
-                </p>
-
-                <h5 class="me_sec">
-                    情報
-                </h5>
-
-                <ul type="disc" class="me_info">
-                    <li>応用情報技術者取得済 (2019年 6月)</li>
-                    <li>基本情報技術者取得済 (2016年11月)</li>
-                </ul>
-
-                <h5 class="me_sec">
-                    Twitter
-                </h5>
-
-                <a class="waves-effect waves-light btn light-blue accent-1" href="https://twitter.com/Tech_Kazu"><i class="fab fa-twitter"></i> フォローする</a>
-            </div>
-
-            <div class="me_pic">
-                <!-- <img src="../IMG/mellicon.jpg" class="me_icon"> -->
-            </div>
-        </div>
-    </body>
-</html>
+        
