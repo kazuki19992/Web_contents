@@ -242,7 +242,7 @@ END;
                     <p class="nv_cts0"><i class="fas fa-folder"></i> Contents</p>
                     <a class="nv_Link" href="../../"> <i class="fas fa-home"></i> HOMEへ </a>
                     <a class="nv_Link" href="./PHP/Developer.php"> <i class="fas fa-code"></i> 開発者ページへ </a>
-                    <a class="nv_Link" href="../Weather/"> <i class="fas fa-cloud-sun-rain"></i> 天気へ </a>
+                    <!-- <a class="nv_Link" href="../Weather/"> <i class="fas fa-cloud-sun-rain"></i> 天気へ </a> -->
                     <BR>
                     <p class="nv_cts1"><i class="far fa-user"></i> 友人のページ</p>
                     <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u286120/"> <i class="fas fa-user-circle"></i></i></i> To 武田 佑樹</a>

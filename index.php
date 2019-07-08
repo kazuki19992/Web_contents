@@ -131,7 +131,7 @@ $loginflg = FALSE;
                     <p class="nv_cts0"><i class="fas fa-folder"></i> Contents</p>
                     <a class="nv_Link" href="./Apps/BBS/"> <i class="fas fa-list-ol"></i> 掲示板へ </a>
                     <a class="nv_Link" href="./Apps/BBS/PHP/Developer.php"> <i class="fas fa-code"></i> 開発者ページへ </a>
-                    <a class="nv_Link" href="./Apps/Weather/"> <i class="fas fa-cloud-sun-rain"></i> 天気へ </a>
+                    <!-- <a class="nv_Link" href="./Apps/Weather/"> <i class="fas fa-cloud-sun-rain"></i> 天気へ </a> -->
                     <BR>
                     <p class="nv_cts1"><i class="far fa-user"></i> 友人のページ</p>
                     <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u286120/"> <i class="fas fa-user-circle"></i></i></i> To 武田 佑樹</a>
@@ -185,17 +185,17 @@ $loginflg = FALSE;
 
                         <td>
                             <center>
-                                <a href="./Apps/Weather/">
+                                <!-- <a href="./Apps/Weather/"> -->
                                     <i class="fas fa-cloud-sun-rain fa-6x"></i><BR>
                                     <p class="appTitle">NU_Weather</p>
                                     <p class="appinfo">
                                         作成:櫛田一樹<BR>
-                                        Ver.0.2.0<BR>
+                                        未リリース(Ver.0.1.8 - Beta)<BR>
                                         <BR>
                                         WebAPIを利用した天気アプリです。<BR>
                                         Powered by Livedoor
                                     </p>
-                                </a>
+                                <!-- </a> -->
                             </center>
                         </td>
 
@@ -209,13 +209,61 @@ $loginflg = FALSE;
                                         Ver.0.1.0<BR>
                                         <BR>
                                         Windowsライクなデスクトップで操作ができます。<BR>
-                                        実行にはスーパーバイザー権限が必要です。
+                                        実行には管理者権限が必要です。(2019/07/11まで解放)
                                     </p>
                                 </a>
                             </center>
                         </td>
                     
                     </tr>
+                    <tr>
+                        <td>
+                            <center>
+                                <a href="https://github.com/kazuki19992/Web_contents" target="_blank">
+                                <i class="fab fa-github fa-6x"></i><BR>
+                                    <p class="appTitle">GitHub - Web_contents</p>
+                                    <p class="appinfo">
+                                        作成:櫛田一樹<BR>
+                                        <BR>
+                                        <BR>
+                                        GitHubの開発用リポジトリです。<BR>
+                                    </p>
+                                </a>
+                            </center>
+                        </td>
+
+                        <td>
+                            <center>
+                                <a href="https://twitter.com/Tech_Kazu" target="_blank">
+                                <i class="fab fa-twitter fa-6x"></i><BR>
+                                    <p class="appTitle">Twitter</p>
+                                    <p class="appinfo">
+                                        作成:櫛田一樹<BR>
+                                        <BR>
+                                        <BR>
+                                        開発者のTwitterアカウントです。<BR>
+                                        ご自由にフォロー/リムーブ/ブロック/ミュートください。
+                                    </p>
+                                </a>
+                            </center>
+                        </td>
+
+                        <td>
+                            <center>
+                                <a href="Web_contents.zip">
+                                <i class="fas fa-download fa-6x"></i><BR>
+                                    <p class="appTitle">ソースコードダウンロード</p>
+                                    <p class="appinfo">
+                                        作成:櫛田一樹<BR>
+                                        Ver.1.0.2<BR>
+                                        <BR>
+                                        ここからソースコードをダウンロード可能です。<BR>
+                                        zip形式で圧縮されていますので解凍してからご利用ください。<BR>
+                                        参考になればどうぞ。
+                                    </p>
+                                </a>
+                            </center>
+                        </td>
 
                 </table>
 

@@ -1,12 +1,51 @@
 <?php
     // Web APIを用いた天気アプリ
     
-    //天気取得先のURL(ベース)
+
+    //ブラウザの判定
+    $Agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+    //ユーザーエージェント情報を元に判定
+    if (strstr($Agent , 'edge')) {
+        $browser='Edge';
+    } elseif (strstr($Agent , 'trident') || strstr($Agent , 'msie')) {
+        $browser='Internet Explorer';
+    } elseif (strstr($Agent , 'chrome')) {
+        $browser='Chrome';
+    } elseif (strstr($Agent , 'firefox')) {
+        $browser='Firefox';
+    } elseif (strstr($Agent , 'safari')) {
+        $browser='Safari';
+    } elseif (strstr($Agent , 'opera')) {
+        $browser='Opera';
+    } else {
+        $browser='不明なブラウザ';
+    }
+
+    // 天気取得先のURL(ベース)
     $url = "http://weather.livedoor.com/forecast/webservice/json/v1";
 
-    //XMLでの地点データ読み込み
+    // XMLでの地点データ読み込み
     $xml = "./DB/primary_area.xml";
     $xmlData = simplexml_load_file($xml);
+
+    // Ver.1.0.0は福島固定
+    $url .= "?city=070010";
+
+
+    // JSON形式でデータを取得
+    $json = file_get_contents($url, true);
+    $json = json_decode($json, true);
+
+    // Pub
+    $title = $json['title'];    // 市区町村
+    $description = $json['description']['text'];    //詳細情報
+    $publicTime = $json['publicTime'];
+
+    // Location
+    $city = $json['location']['city'];  // 福島
+    $area = $json['location']['area'];  // 東北
+    $prefecture = $json['location']['prefecture'];  // 福島県
+    $link = $json['link'];
 
 ?>
 
@@ -118,5 +157,161 @@
 
             </center>
         </header>
+        <div class="contents">
+            <center>
+                <h3> <?php echo($prefecture); ?> </h3>
 
+                <!-- PHPで天気予報の取得 -->
+                <?php
+                    
+
+                    //日付
+                    $page = 0;
+
+                    // 配列の宣言
+                    // $dateLabel = array();
+                    // $telop = array();
+                    // $date = array();
+                    // $min = array();
+                    // $max = array();
+                    // $mincelsius = array();
+                    // $minfahrenheit = array();
+                    // $maxcelsius = array();
+                    // $maxfahrenheit = array();
+                    // $image = array();
+
+
+                    // 今日・明日・明後日の情報を表示
+                    foreach($json['forecasts'] as $entry) {
+                        $dateLabel = $entry['dateLabel'];       // 今日・明日・明後日
+                        $telop = $entry['telop'];               // 天気
+                        $date = $entry['date'];                 // 日付
+                        $min = $entry['temperature']['min'];    // 最低気温
+                        $max = $entry['temperature']['max'];    // 最高気温
+                        $mincelsius = $entry['temperature']['min']["celsius"]; // 最低気温(摂氏)
+                        $minfahrenheit = $entry['temperature']['min']["fahrenheit"]; //最低気温(華氏)
+                        $maxcelsius = $entry['temperature']['max']["celsius"]; // 最高気温(摂氏)
+                        $maxfahrenheit = $entry['temperature']['max']["fahrenheit"]; // 最高気温(華氏)
+                        $image = $entry['image']["url"]; // お天気アイコン
+                        
+                        //NULL処理
+                        if (!isset($min)) {
+                            $mincelsius = "--";
+                        }
+                        if (!isset($max)) {
+                            $maxcelsius = "--";
+                        }
+                        if (!isset($celsius)) {
+                            $min = "--";
+                        }
+                        if (!isset($fahrenheit)) {
+                            $min = "--";
+                        }
+                        
+                        // お天気アイコンが絶望的すぎるので変更
+                        if ($image == "http://weather.livedoor.com/img/icon/1.gif") { // 晴れ
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/1.gif", "./IMG/iCon/weather_icons-01.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/2.gif") { // 晴れ時々曇り?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/2.gif", "./IMG/iCon/weather_icons-17.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/3.gif") { // 晴れ時々雨?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/3.gif", "./IMG/iCon/weather_icons-30.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/4.gif") { // 晴れ時々雪?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/4.gif", "./IMG/iCon/weather_icons-26.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/5.gif") { // 晴れのち曇り?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/5.gif", "./IMG/iCon/weather_icons-17.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/6.gif") { // 晴れのち雨?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/6.gif", "./IMG/iCon/weather_icons-20.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/7.gif") { // 晴れのち雪?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/7.gif", "./IMG/iCon/weather_icons-26.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/8.gif") { // 曇り
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/8.gif", "./IMG/iCon/weather_icons-16.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/9.gif") { // 曇りときどき晴れ?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/9.gif", "./IMG/iCon/weather_icons-17.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/10.gif") { // 曇り時々雨?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/10.gif", "./IMG/iCon/weather_icons-22.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/11.gif") { // 曇り時々雪?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/11.gif", "./IMG/iCon/weather_icons-31.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/12.gif") { // 曇りのち晴れ?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/12.gif", "./IMG/iCon/weather_icons-17.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/13.gif") { // 曇りのち雨?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/13.gif", "./IMG/iCon/weather_icons-45.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/14.gif") { // 曇りのち雪?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/14.gif", "./IMG/iCon/weather_icons-31.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/15.gif") { // 雨
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/15.gif", "./IMG/iCon/weather_icons-14.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/16.gif") { // 雨時々晴れ?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/16.gif", "./IMG/iCon/weather_icons-23.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/17.gif") { // 雨時々曇り?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/17.gif", "./IMG/iCon/weather_icons-19.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/18.gif") { // 雨時々雪?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/18.gif", "./IMG/iCon/weather_icons-51.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/19.gif") { // 雨のち晴れ?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/19.gif", "./IMG/iCon/weather_icons-46.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/20.gif") { // 雨のち曇り?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/20.gif", "./IMG/iCon/weather_icons-19.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/21.gif") { // 雨のち雪?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/21.gif", "./IMG/iCon/weather_icons-51.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/22.gif") { // 大雨
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/22.gif", "./IMG/iCon/weather_icons-54.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/23.gif") { // 雪
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/23.gif", "./IMG/iCon/weather_icons-68.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/24.gif") { // 雪時々晴れ?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/24.gif", "./IMG/iCon/weather_icons-26.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/25.gif") { // 雪時々曇り?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/25.gif", "./IMG/iCon/weather_icons-31.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/26.gif") { // 雪時々雨?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/26.gif", "./IMG/iCon/weather_icons-51.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/27.gif") { // 雪のち晴れ?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/27.gif", "./IMG/iCon/weather_icons-32.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/28.gif") { // 雪のち曇り?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/28.gif", "./IMG/iCon/weather_icons-31.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/29.gif") { // 雪のち雨?
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/29.gif", "./IMG/iCon/weather_icons-48.svg", $image);
+                        }
+                        else if ($image == "http://weather.livedoor.com/img/icon/30.gif") { // 大雪
+                            $image = str_replace( "http://weather.livedoor.com/img/icon/30.gif", "./IMG/iCon/weather_icons-68.svg", $image);
+                        }
+
+
+
+                        if($dateLabel == '今日'){
+                            $MSG = "
+                            <div class=\"today\">
+                                <p
+                            
+
+                        }
+                    }
+                ?>
+
+
+       
         
