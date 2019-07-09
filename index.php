@@ -164,7 +164,7 @@ $loginflg = FALSE;
         </header>
 
         <div class="contents">
-            <h4 class="bbslisttitle">Apprication</h4>
+            <h4 class="bbslisttitle">Application</h4>
             <div id="appDrawer">
                 <table id="appGrid" border="1" width = "100%">
                     <tr>
