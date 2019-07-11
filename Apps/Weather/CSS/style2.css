@@ -82,3 +82,18 @@ h4 {
     right: 2em;
     z-index: 2;
 }
+
+#Weather_icon {
+    width: 20em;
+    height: auto;
+}
+
+#weather_table {
+    border: none;
+}
+
+.Wea_info {
+    font-size: 10px;
+    color: rgb(112, 112, 112);
+    font-weight: thin;
+}

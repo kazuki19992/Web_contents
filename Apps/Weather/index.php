@@ -299,18 +299,53 @@
                         else if ($image == "http://weather.livedoor.com/img/icon/30.gif") { // 大雪
                             $image = str_replace( "http://weather.livedoor.com/img/icon/30.gif", "./IMG/iCon/weather_icons-68.svg", $image);
                         }
-
+                        
+                        //文字列の中にある半角空白と全角空白をすべて削除・除去する
+                        // $telop  = preg_replace("/( |　)/", "", $telop );
 
 
                         if($dateLabel == '今日'){
-                            $MSG = "
-                            <div class=\"today\">
-                                <p
-                            
-
+                            echo "<img src=\"".$image."\" id=\"Weather_icon\">";
+                            // echo $telop;                        
+                        ?>
+                        
+                            <div class="Weather_info">
+                                <table id="weather_table">
+                                    <tr>
+                                        <td>
+                                            <p class="Wea_info">
+                                                最高気温：<?php echo $max; ?><BR>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="Wea_info">
+                                                最低気温：<?php echo $min; ?><BR><BR>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="Wea_info">
+                                                <left>
+                                                    詳細情報：<BR>
+                                                    <?php echo $description; ?>
+                                                </left>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        <?php
                         }
                     }
                 ?>
+            </center>
+        </div>
+    </body>
+</html>
+
 
 
        
