@@ -1,2 +1,5 @@
 2019/07/09 16:19,::1,,http://localhost/ , mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/73.0.3683.86 safari/537.36
 2019/07/09 16:19,::1,,http://localhost/Apps/BBS/build.php , mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/73.0.3683.86 safari/537.36
+2019/07/18 01:13,::1,,http://localhost/ , mozilla/5.0 (x11; linux x86_64) applewebkit/537.36 (khtml, like gecko) chrome/75.0.3770.100 safari/537.36
+2019/07/18 01:17,::1,,http://localhost/ , mozilla/5.0 (x11; linux x86_64) applewebkit/537.36 (khtml, like gecko) chrome/75.0.3770.100 safari/537.36
+2019/07/18 01:20,::1,,http://localhost/ , mozilla/5.0 (x11; linux x86_64) applewebkit/537.36 (khtml, like gecko) chrome/75.0.3770.100 safari/537.36

@@ -82,7 +82,7 @@
             <input id="bbsname" type="text" class="validate" name="newdbname_kana" data-length="120">
             <label for="bbsname">新規レス</label>
         </div>
-        <button class="btn waves-effect waves-light light-green darken-1" type="submit" name="newbbs""><i class="material-icons right">send</i>送る</button>
+        <button class="btn waves-effect waves-light light-green darken-1" type="submit" name="newbbs"><i class="material-icons right">send</i>送る</button>
         </form>
         
 EOF;
@@ -160,7 +160,7 @@ END;
         <title>NU-BBS</title>
         
         <meta charset="utf-8">
-        <meta name"viewport" content="initial-scale=1.0">
+        <meta name="viewport" content="initial-scale=1.0">
         <meta name="theme-color" content="#ffb60f">
         <script type="text/javascript" src="./JS/func.js"></script>
         <!-- <link rel="stylesheet" href="CSS/style.css" media="all"> -->
@@ -245,18 +245,20 @@ END;
                     <a class="nv_Link" href="../Weather/"> <i class="fas fa-cloud-sun-rain"></i> 天気へ </a>
                     <BR>
                     <p class="nv_cts1"><i class="far fa-user"></i> 友人のページ</p>
-                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u286120/"> <i class="fas fa-user-circle"></i></i></i> To 武田 佑樹</a>
-                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u306024/"> <i class="fas fa-user-circle"></i></i></i> To 海老原 毅史</a>
-                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u306062/"> <i class="fas fa-user-circle"></i></i></i> To 川村 怜央</a>
-                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u306066/"> <i class="fas fa-user-circle"></i></i></i> To 久保木 駿</a>
+                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u286120/"> <i class="fas fa-user-circle"></i> To 武田 佑樹</a>
+                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u306013/"> <i class="fas fa-user-circle"></i> To 石河 秀壱</a>
+                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u306024/"> <i class="fas fa-user-circle"></i> To 海老原 毅史</a>
+                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u306056/"> <i class="fas fa-user-circle"></i> To 狩野 篤志</a>
+                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u306062/"> <i class="fas fa-user-circle"></i> To 川村 怜央</a>
+                    <a class="nv_Link1" href="http://www.cse.ce.nihon-u.ac.jp/~u306066/"> <i class="fas fa-user-circle"></i> To 久保木 駿</a>
                     <BR>
                     <p class="nv_cts2"><i class="fas fa-id-card"></i> コンタクト</p>
                     <a class="nv_Link2" href="https://twitter.com/Tech_Kazu"> <i class="fab fa-twitter"></i> フォローする</a>
                     <a class="nv_Link2" href="https://github.com/kazuki19992"> <i class="fab fa-github"></i> GitHubを見てみる</a>
-                    <a class="nv_Link2" href="https://github.com/kazuki19992/Web_contents/issues"> <i class="fab fa-github"></i> GiuHubで不具合を報告する</a>
                     <a class="nv_Link2" href="mailto:kushida98@gmail.com"> <i class="fas fa-envelope"></i> メールで不具合を報告する</a>
 
                 </div>
+            </div>
             <center>
 
             <h1 class="title">NU-BBS</h1>
