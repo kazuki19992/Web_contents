@@ -114,41 +114,6 @@ EOF;
     } else {
         $browser='不明なブラウザ';
     }
-    
-    $MSG = <<< END
-            <div class="popup" id="js-popup">
-                <div class="popup-inner">
-                    <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
-                        <h2>おすすめしていないブラウザのようです!</h2>
-                        <p>このブラウザではベストな感じに表示されないかもしれないようです。<br>
-                        もし、表示が崩れるようなことがあったら、以下のブラウザからアクセスしてみてください！</p>
-                        <h4>推奨ブラウザ</h4>
-                        <ul type = "disc">
-                            <li> Google Chrome</li>
-                            <li> その他Chromiumブラウザ</li>
-                        </ul>
-                    </div>
-                <div class="black-background" id="js-black-bg"></div>
-            </div>
-END;
-
-    $MSIE = <<< END
-        <div class="popup" id="js-popup">
-        <div class="popup-inner">
-            <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
-                <h3>まだIEなんかで消耗してるの?</h2>
-                <p>IE使用ニキがいるってマ！？<BR>MSが使用を勧めないって言ってるからはやく乗り換えような！</p>
-                <h4>推奨ブラウザ</h4>
-                <ul type = "disc">
-                    <li> Google Chrome</li>
-                    <li> Mozilla Firefox</li>
-                    <li> Apple Safari<li>
-                    <li> Opera</li>
-                </ul>
-            </div>
-        <div class="black-background" id="js-black-bg"></div>
-        </div>
-END;
 
 ?>
 
@@ -264,13 +229,6 @@ END;
             <h1 class="title">NU-BBS</h1>
             <div class="info">この掲示板の基幹部分は<a  href="https://qiita.com/torokko/items/8a07519782f01a68c627">このページ</a>を参考にしました。</div>
             <BR>
-            <?php
-            if($browser != 'Chrome' && $browser != 'Internet Explorer'){
-                echo $MSG;
-            }else if($browser == 'Internet Explorer'){
-                echo $MSIE;
-            }
-            ?>
 
             </center>
         </header>
